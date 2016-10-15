@@ -8,7 +8,11 @@ const Questions = React.createClass({
     )
     return (
       <div className="questionBox">
-        {questions}
+        <h3>Are you are immediate danger</h3>
+        <div className="buttons">
+          <button className="questionButton yes">YES</button>
+          <button className="questionButton no">NO</button>
+        </div>
       </div>
     )
   }

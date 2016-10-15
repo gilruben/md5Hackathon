@@ -14,7 +14,7 @@ import './App.css'
 const App = React.createClass({
   getInitialState() {
     return {
-      instructions: "You are connected to the Emergency Hotspot",
+      instructions: ["You are connected to the Emergency Hotspot","Send GPS Location if you need immediate help!"],
       helpButton: true,
       showMap: false,
       questions: ["1","2","3"]
@@ -52,9 +52,9 @@ const App = React.createClass({
     return (
       <div className="mainBody">
         <header>
-          <h1>FindME</h1>
+          <h1>FINDME</h1>
         </header>
-        <Instructions instructions={this.state.instructions}/>
+        <Instructions pathLocation={this.props.location.pathname} instructions={this.state.instructions}/>
         {children}
         {!this.state.showMap ? <MapButton viewMap={this.viewMap}/> : null}
       </div>
