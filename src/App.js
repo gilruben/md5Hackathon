@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Router, Route, browserHistory, IndexRoute} from 'react-router'
+import HomePage from './HomePage'
+import Questions from './Questions'
+
+
 import Instructions from './components/Instructions'
-import HelpButton from './components/HelpButton'
 import MapButton from './components/MapButton'
+
 
 import './App.css'
 
 const App = React.createClass({
   getInitialState() {
     return {
-      instructions: "This is an emergency app",
+      instructions: "You are connected to the Emergency Hotspot",
       helpButton: true,
-      showMap: false
+      showMap: false,
+      questions: ["1","2","3"]
     }
   },
   ajaxCall(){
@@ -38,10 +44,18 @@ const App = React.createClass({
     this.setState({showMap: true})
   },
   render() {
+    let that = this
+    let children = React.Children.map(this.props.children, function(child) {
+        return React.cloneElement(child, Object.assign({}, that.state));
+    });
+
     return (
       <div className="mainBody">
+        <header>
+          <h1>FindME</h1>
+        </header>
         <Instructions instructions={this.state.instructions}/>
-        <HelpButton />
+        {children}
         {!this.state.showMap ? <MapButton viewMap={this.viewMap}/> : null}
       </div>
     )
@@ -49,6 +63,11 @@ const App = React.createClass({
 })
 
 ReactDOM.render(
-  <App />,
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <IndexRoute component={HomePage} />
+      <Route path="/questions" component={Questions}/>
+    </Route> 
+  </Router>,
   document.getElementById('root')
-);
+)
