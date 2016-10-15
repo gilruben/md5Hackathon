@@ -55,7 +55,7 @@ const App = React.createClass({
         return React.cloneElement(child, Object.assign({}, that.state));
     });
 
-    navigator.geolocation.getCurrentPosition(this.showPosition);
+    //navigator.geolocation.getCurrentPosition(this.showPosition);
 
     return (
       <div className="mainBody">
