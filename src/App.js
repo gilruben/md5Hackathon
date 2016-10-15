@@ -43,11 +43,19 @@ const App = React.createClass({
   viewMap() {
     this.setState({showMap: true})
   },
+  showPosition(position) {
+    var locatn = "Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude;
+
+    console.log(locatn);
+  },
   render() {
     let that = this
     let children = React.Children.map(this.props.children, function(child) {
         return React.cloneElement(child, Object.assign({}, that.state));
     });
+
+    navigator.geolocation.getCurrentPosition(this.showPosition);
 
     return (
       <div className="mainBody">
@@ -67,7 +75,7 @@ ReactDOM.render(
     <Route path="/" component={App}>
       <IndexRoute component={HomePage} />
       <Route path="/questions" component={Questions}/>
-    </Route> 
+    </Route>
   </Router>,
   document.getElementById('root')
 )
