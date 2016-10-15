@@ -16,7 +16,7 @@ const App = React.createClass({
   },
   ajaxCall(){
     var request = new XMLHttpRequest();
-    request.open('GET', '/my/url', true);
+    request.open('GET', '10.0.2.10:80', true);
 
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
@@ -24,7 +24,7 @@ const App = React.createClass({
         var data = JSON.parse(request.responseText);
       } else {
         // We reached our target server, but it returned an error
-      }   
+      }
     };
     request.onerror = function() {
       // There was a connection error of some sort
