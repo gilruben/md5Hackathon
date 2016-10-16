@@ -17,7 +17,9 @@ const App = React.createClass({
       instructions: ["You are connected to the Emergency Hotspot","Send GPS Location if you need immediate help!"],
       helpButton: true,
       showMap: false,
-      questions: ["1","2","3"]
+      questions: ["1","2","3"],
+      danger: false,
+      dangerFunc: this.questionButton
     }
   },
   ajaxCall(){
@@ -37,8 +39,8 @@ const App = React.createClass({
     };
     request.send();
   },
-  helpButton(){
-
+  questionButton(){
+    this.setState({danger: true})
   },
   viewMap() {
     this.setState({showMap: true})
