@@ -3,6 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import data from './info.js';
 
 
+
 const Questions = React.createClass({
   getInitialState() {
     return {questions: data.mandatory, currentIndx: 0}

@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router'
-import HomePage from './HomePage';
-import Questions from './Questions';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
+//components
+import HomePage from './HomePage'
+import Questions from './Questions'
+import Instructions from './components/Instructions'
+import MapButton from './components/MapButton'
 
 
-import Instructions from './components/Instructions';
-import MapButton from './components/MapButton';
+import mapImage from './images/map.jpg'
 
 
 import './App.css';
@@ -86,9 +90,16 @@ const App = React.createClass({
     this.setState({danger: dangerState})
   },
   viewMap() {
-    this.setState({showMap: true})
+    let mapState = this.state.showMap ? false : true
+    this.setState({showMap: mapState})
   },
   render() {
+    let mapButton = (
+      <div className="mapBox">
+        <MapButton viewMap={this.viewMap}/>
+        <div className="mapImg"><img src={mapImage} /></div>
+      </div>
+    )
     return (
       <div className="mainBody">
         <header>
@@ -96,7 +107,15 @@ const App = React.createClass({
         </header>
         <Instructions pathLocation={this.props.location.pathname} instructions={this.state.instructions}/>
         {React.cloneElement(this.props.children , Object.assign({}, this.state))}
-        {!this.state.showMap ? <MapButton viewMap={this.viewMap}/> : null}
+        {this.state.showMap ? <ReactCSSTransitionGroup
+          transitionName="map"
+          transitionAppear={true}
+          transitionAppearTimeout={500000}
+          transitionEnterTimeout={0}
+          transitionLeave={true}
+          transitionLeaveTimeout={1000}>
+           {mapButton}
+          </ReactCSSTransitionGroup> : mapButton}
       </div>
     )
   }

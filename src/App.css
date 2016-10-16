@@ -22,6 +22,8 @@ body{
   background: #f2f3f4;
   box-sizing: border-box;
   color: #575655;
+  overflow: hidden; 
+  height: 100vh;
 }
 
 .mainBody {
@@ -89,6 +91,12 @@ header h1 {
   font-family: helvetica;
   font-size: 1.2em;
 }
+.mapBox{
+  position: absolute;
+  top: 560px;
+  width: 100%;
+  height: 100%;
+}
 
 .mapButton{
   background: #575655;
@@ -105,6 +113,34 @@ header h1 {
 
 .mapButton p{
   margin: 0;
+}
+
+.mapImg {
+  width: 100%;
+  height: 95%;
+}
+
+.mapImg img {
+  width: auto;
+  height: 100%;
+}
+
+.map-appear {
+  top: 560px;
+}
+
+.map-appear.map-appear-active {
+  top: 0px;
+  transition: all 750ms linear;
+}
+
+.mapOut-appear {
+  top: 0px;
+}
+
+.mapOut-appear.mapOut-appear-active {
+  top: 560px;
+  transition: all 750ms linear;
 }
 
 .questionBox{
