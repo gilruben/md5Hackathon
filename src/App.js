@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import HomePage from './HomePage'
 import Questions from './Questions'
 
@@ -64,7 +65,13 @@ const App = React.createClass({
         </header>
         <Instructions instructions={this.state.instructions}/>
         {children}
-        {!this.state.showMap ? <MapButton viewMap={this.viewMap}/> : null}
+
+        <ReactCSSTransitionGroup transitionName="pageSlider">
+          <MapButton viewMap={this.viewMap}
+            className="map"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={300} />
+        </ReactCSSTransitionGroup>
       </div>
     )
   }
