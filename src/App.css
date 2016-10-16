@@ -2,21 +2,30 @@
     font-family: helvetica;
     src: url(fonts/HelveticaNeueLTStd-Md.otf);
 }
+@font-face {
+    font-family: helveticaLT;
+    src: url(fonts/HelveticaNeueLTStd-Lt.otf);
+}
 
 /*
-Red #BE2106
+Red #e85540
 Green #4DBE06
-Dark gray #ffffff
+Dark gray #575655
+med gray #5b5b5c
+lightGray #f2f3f4
 */
 
 body{
   margin: 0;
   padding: 0;
-  font-family: helvetica;
+  font-family: helveticaLT;
+  background: #f2f3f4;
+  box-sizing: border-box;
+  color: #575655;
 }
 
 .mainBody {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
@@ -25,57 +34,104 @@ body{
 
 header{
   background: #575655;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header h1 {
   color: white;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 1.5em;
+}
+
+.mainInstructions {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+
+.mainInstructions h1, .instructions h1 {
+  font-size: 1.2em;
+  color: #575655;
+  margin: 8px;
 }
 
 .instructions {
-  width: 100%;
-  height: 30%;
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
+  padding: 3%;
 }
 
 .homePage {
-  width: 100vw;
   height: 60%;
-  border: 1px solid blue;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .homePage a {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
+    display: flex;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .helpButton {
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 60%;
   border: none;
-  background: red;
+  border-radius: 30px;
+  background: #e85540;
+  color: white;
+  font-family: helvetica;
+  font-size: 1.2em;
 }
 
 .mapButton{
-  background: yellow;
+  background: #575655;
   width: 100%;
-  height: 10%;
+  height: 15%;
   position: fixed;
   bottom: 0;
   left: 0;
   border: none;
+  color: white;
+  font-size: 1.2em;
 }
 .questionBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  height: 10vh;
 }
 
 .questionButton {
-
+  width: 45%;
+  color: white;
+  background: #9a9b9c;
+  border: none;
+  font-size: 1.2em;
+  font-family: helvetica;
 }
+
+.yes:hover {
+  background: #4DBE06
+}
+
+.no:hover {
+  background: #e85540
+}
+
+
 
 
 

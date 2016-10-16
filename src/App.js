@@ -11,41 +11,72 @@ import MapButton from './components/MapButton';
 
 import './App.css';
 
+import data from './info';
+
 const App = React.createClass({
   getInitialState() {
     return {
-      instructions: null,
+      instructions: ["You are connected to the Emergency Hotspot","Send GPS Location if you need immediate help!"],
       helpButton: true,
       showMap: false,
       questions: null,
+      questionsIndex: 0,
       HQInfo: null 
 
     }
   },
   componentWillMount(){
     this.ajaxCall();
-    console.log(this.state.HQInfo)
-    this.setQuestions(this.state.HQInfo);
+    setTimeout(()=>this.setQuestions(this.state.HQInfo), 2);
+    
   },
   ajaxCall(){
-    var request = new XMLHttpRequest();
-    request.open('GET', 'http://10.0.2.10:8888/r', true);
+    this.setState({HQInfo:"aa"});
+    // var request = new XMLHttpRequest();
+    // request.open('GET', 'http://10.0.2.10:8888/r', true);
 
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        // Success!
-        var data = JSON.parse(request.responseText);
-        console.log(data);
-        this.setState({HQInfo:data});
-      }   
-    };
-    request.onerror = function() {
-      // There was a connection error of some sort
-    };
-    request.send();
+    // request.onload = function() {
+    //   if (request.status >= 200 && request.status < 400) {
+    //     // Success!
+    //     var data = JSON.parse(request.responseText);
+    //     console.log(data);
+    //     this.setState({HQInfo:data});
+    //   }   
+    // };
+    // request.onerror = function() {
+    //   // There was a connection error of some sort
+    // };
+
+    // request.send();
   },
-  setQuestions(){
+  setQuestions(hqInfo){
+    var output = [];
+    // console.log(hqInfo)
+    var range = [];
+    if(hqInfo.length === 5){
+      var startRange = hqInfo[1].charCodeAt(0);
+      var endRange = hqInfo[2].charCodeAt(0);
+      
+      for (var i = startRange+1; i < endRange-1; i++) {
+        range.push(i);
+      }
+      range = [startRange, ...range, endRange];
+      range = String.fromCharCode(...range);
+    }
 
+    output.push(...data.mandatory);
+    for(var inf in data){    
+      if(hqInfo[0] === "a" && hqInfo[hqInfo.length-1] === "a"){
+        if (inf === "huricane") {
+          for(var info in data.huricane){
+            if (range.includes(info)){
+              output=[...output,data.huricane[info]];
+            }
+          }
+        }
+      }
+    }
+    console.log(output);
   },
   helpButton(){
 
@@ -62,9 +93,9 @@ const App = React.createClass({
     return (
       <div className="mainBody">
         <header>
-          <h1>FindME</h1>
+          <h1>FINDME</h1>
         </header>
-        <Instructions instructions={this.state.instructions}/>
+        <Instructions pathLocation={this.props.location.pathname} instructions={this.state.instructions}/>
         {children}
         {!this.state.showMap ? <MapButton viewMap={this.viewMap}/> : null}
       </div>
