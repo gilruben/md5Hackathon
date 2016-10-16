@@ -22,7 +22,7 @@ body{
   background: #f2f3f4;
   box-sizing: border-box;
   color: #575655;
-  overflow: hidden; 
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -173,6 +173,21 @@ header h1 {
   position: relative;
 }
 
+<<<<<<< HEAD
+=======
+.yes {
+  color: white;
+}
+
+.yes:hover {
+  color: white;
+}
+
+.no:hover {
+  color: white;
+}
+
+>>>>>>> 2b053985a039bbd3eb22ef17fd1f493d494ea9da
 .buttons-appear {
   width: 85%;
   height: 10vh;
@@ -217,6 +232,20 @@ header h1 {
   position: relative;
 }
 
+<<<<<<< HEAD
+=======
+.yes {
+  color: white;
+}
+
+.yes:hover {
+  color: white;
+}
+
+.no:hover {
+  color: white;
+}
+>>>>>>> 2b053985a039bbd3eb22ef17fd1f493d494ea9da
 
 .buttons-appear {
   width: 85%;
@@ -246,7 +275,6 @@ header h1 {
 .answerButton {
   width: 90%;
   height: 30%;
-  background: #9a9b9c;
   border: none;
   color: white;
   font-size: 1.2em;
