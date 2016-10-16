@@ -93,7 +93,7 @@ header h1 {
 }
 .mapBox{
   position: absolute;
-  top: 560px;
+  top: 85%;
   width: 100%;
   height: 100%;
 }
@@ -118,6 +118,7 @@ header h1 {
 .mapImg {
   width: 100%;
   height: 95%;
+  background: url('./images/map1.jpg')
 }
 
 .mapImg img {
@@ -126,7 +127,7 @@ header h1 {
 }
 
 .map-appear {
-  top: 560px;
+  top: 85;
 }
 
 .map-appear.map-appear-active {
@@ -172,6 +173,8 @@ header h1 {
   position: relative;
 }
 
+<<<<<<< HEAD
+=======
 .yes {
   color: white;
 }
@@ -184,6 +187,7 @@ header h1 {
   color: white;
 }
 
+>>>>>>> 2b053985a039bbd3eb22ef17fd1f493d494ea9da
 .buttons-appear {
   width: 85%;
   height: 10vh;
@@ -228,6 +232,8 @@ header h1 {
   position: relative;
 }
 
+<<<<<<< HEAD
+=======
 .yes {
   color: white;
 }
@@ -239,6 +245,7 @@ header h1 {
 .no:hover {
   color: white;
 }
+>>>>>>> 2b053985a039bbd3eb22ef17fd1f493d494ea9da
 
 .buttons-appear {
   width: 85%;

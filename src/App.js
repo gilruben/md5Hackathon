@@ -10,9 +10,6 @@ import Instructions from './components/Instructions'
 import MapButton from './components/MapButton'
 
 
-import mapImage from './images/map.jpg'
-
-
 import './App.css';
 
 import data from './info';
@@ -97,13 +94,13 @@ const App = React.createClass({
     let mapButton = (
       <div className="mapBox">
         <MapButton viewMap={this.viewMap}/>
-        <div className="mapImg"><img src={mapImage} /></div>
+        <div className="mapImg"></div>
       </div>
     )
     return (
       <div className="mainBody">
         <header>
-          <h1>FINDME</h1>
+          <h1>RadSpoke</h1>
         </header>
         <Instructions pathLocation={this.props.location.pathname} instructions={this.state.instructions}/>
         {React.cloneElement(this.props.children , Object.assign({}, this.state))}
