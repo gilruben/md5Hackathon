@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router'
-import HomePage from './HomePage'
-import Questions from './Questions'
+import HomePage from './HomePage';
+import Questions from './Questions';
 
 
-import Instructions from './components/Instructions'
-import MapButton from './components/MapButton'
+import Instructions from './components/Instructions';
+import MapButton from './components/MapButton';
 
 
-import './App.css'
+import './App.css';
+
+import data from './info';
 
 const App = React.createClass({
   getInitialState() {
@@ -17,27 +19,65 @@ const App = React.createClass({
       instructions: ["You are connected to the Emergency Hotspot","Send GPS Location if you need immediate help!"],
       helpButton: true,
       showMap: false,
-      questions: ["1","2","3"],
+      questions: null,
+      questionsIndex: 0,
+      HQInfo: null,
       danger: false,
       dangerFunc: this.questionButton
     }
   },
+  componentWillMount(){
+    this.ajaxCall();
+    setTimeout(()=>this.setQuestions(this.state.HQInfo), 2);
+    
+  },
   ajaxCall(){
-    var request = new XMLHttpRequest();
-    request.open('GET', '10.0.2.10:80', true);
+    this.setState({HQInfo:"aa"});
+    // var request = new XMLHttpRequest();
+    // request.open('GET', 'http://10.0.2.10:8888/r', true);
 
-    request.onload = function() {
-      if (request.status >= 200 && request.status < 400) {
-        // Success!
-        var data = JSON.parse(request.responseText);
-      } else {
-        // We reached our target server, but it returned an error
-      }   
-    };
-    request.onerror = function() {
-      // There was a connection error of some sort
-    };
-    request.send();
+    // request.onload = function() {
+    //   if (request.status >= 200 && request.status < 400) {
+    //     // Success!
+    //     var data = JSON.parse(request.responseText);
+    //     console.log(data);
+    //     this.setState({HQInfo:data});
+    //   }   
+    // };
+    // request.onerror = function() {
+    //   // There was a connection error of some sort
+    // };
+
+    // request.send();
+  },
+  setQuestions(hqInfo){
+    var output = [];
+    // console.log(hqInfo)
+    var range = [];
+    if(hqInfo.length === 5){
+      var startRange = hqInfo[1].charCodeAt(0);
+      var endRange = hqInfo[2].charCodeAt(0);
+      
+      for (var i = startRange+1; i < endRange-1; i++) {
+        range.push(i);
+      }
+      range = [startRange, ...range, endRange];
+      range = String.fromCharCode(...range);
+    }
+
+    output.push(...data.mandatory);
+    for(var inf in data){    
+      if(hqInfo[0] === "a" && hqInfo[hqInfo.length-1] === "a"){
+        if (inf === "huricane") {
+          for(var info in data.huricane){
+            if (range.includes(info)){
+              output=[...output,data.huricane[info]];
+            }
+          }
+        }
+      }
+    }
+    console.log(output);
   },
   questionButton(){
     this.setState({danger: true})
@@ -73,3 +113,4 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 )
+
