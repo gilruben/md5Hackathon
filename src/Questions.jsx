@@ -54,6 +54,9 @@ const Questions = React.createClass({
           <button onClick={this.nextQuestion} className="answerButton">Minor Injury</button>
           <button onClick={this.nextQuestion} className="answerButton">Difficulty Breathing</button>
           </div> : null
+      } else if(this.state.currentIndx >= questions.length){
+        display = null;
+        answer = null;
       } else {
         dangerButtons =( <div className="buttons">
           <button onClick={this.nextQuestionOnYes} className={"questionButton " + yes}>YES</button>

@@ -22,7 +22,7 @@ body{
   background: #f2f3f4;
   box-sizing: border-box;
   color: #575655;
-  overflow: hidden; 
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -173,17 +173,14 @@ header h1 {
 }
 
 .yes {
-  background: #4DBE06;
   color: white;
 }
 
 .yes:hover {
-  background: #4DBE06;
   color: white;
 }
 
 .no:hover {
-  background: #e85540;
   color: white;
 }
 
@@ -232,17 +229,14 @@ header h1 {
 }
 
 .yes {
-  background: #4DBE06;
   color: white;
 }
 
 .yes:hover {
-  background: #4DBE06;
   color: white;
 }
 
 .no:hover {
-  background: #e85540;
   color: white;
 }
 
@@ -274,7 +268,6 @@ header h1 {
 .answerButton {
   width: 90%;
   height: 30%;
-  background: #9a9b9c;
   border: none;
   color: white;
   font-size: 1.2em;
