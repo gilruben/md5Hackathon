@@ -2,21 +2,30 @@
     font-family: helvetica;
     src: url(fonts/HelveticaNeueLTStd-Md.otf);
 }
+@font-face {
+    font-family: helveticaLT;
+    src: url(fonts/HelveticaNeueLTStd-Lt.otf);
+}
 
 /*
-Red #BE2106
+Red #e85540
 Green #4DBE06
-Dark gray #ffffff
+Dark gray #575655
+med gray #9a9b9c
+lightGray #f2f3f4
 */
 
 body{
   margin: 0;
   padding: 0;
-  font-family: helvetica;
+  font-family: helveticaLT;
+  background: #f2f3f4;
+  box-sizing: border-box;
+  color: #575655;
 }
 
 .mainBody {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   display: flex;
@@ -25,73 +34,153 @@ body{
 
 header{
   background: #575655;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header h1 {
   color: white;
+  margin: 0;
+  padding-top: 10px;
+  font-size: 1.5em;
+}
+
+.mainInstructions {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+
+.mainInstructions h1, .instructions h1 {
+  font-size: 1.2em;
+  color: #575655;
+  margin: 8px;
 }
 
 .instructions {
-  width: 100%;
-  height: 30%;
-  border: 1px solid red;
-  display: flex;
-  justify-content: center;
+  padding: 3%;
 }
 
 .homePage {
-  width: 100vw;
   height: 60%;
-  border: 1px solid blue;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .homePage a {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
+    display: flex;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .helpButton {
-  width: 100%;
-  height: 100%;
+  width: 175px;
+  height: 200px;
   border: none;
-  background: red;
+  border-radius: 30px;
+  background: #e85540;
+  color: white;
+  font-family: helvetica;
+  font-size: 1.2em;
 }
 
-.questionBox{
-
-}
-
-.questionButton {
-
-}
-
-.pageSlider-enter {
-  transform: translate3d(100%, 0, 0);
-}
-
-.pageSlider-enter.pageSlider-enter-active {
-  transform: translate3d(0, 0, 0);
-  transition: all 600ms;
-}
-
-.map {
-  position: absolute;
-  top: 0;
-  left: 0;
+.mapButton{
+  background: #575655;
   width: 100%;
-  height: 100%;
-  z-index: 1000px;
-}
-
-.map-header {
-  width: 100%;
-  height: 10%;
-  background: yellow;
-  position: fixed;
+  height: 15%;
   bottom: 0;
   left: 0;
   border: none;
+  color: white;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+}
+
+.mapButton p{
+  margin: 0;
+}
+
+.questionBox{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 55%;
+}
+.questionBox span {
+  width:100%;
+  display: flex;
+  justify-content: center
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  height: 10vh;
+}
+
+.questionButton {
+  width: 45%;
+  color: white;
+  background: #9a9b9c;
+  border: none;
+  font-size: 1.2em;
+  font-family: helvetica;
+  position: relative;
+}
+
+.yes {
+  background: #4DBE06;
+  color: white;
+}
+
+.yes:hover {
+  background: #4DBE06;
+  color: white;
+}
+
+.no:hover {
+  background: #e85540;
+  color: white;
+}
+
+.buttons-appear {
+  width: 85%;
+  height: 10vh;
+  font-size: 1.2em;
+}
+
+.buttons-appear.buttons-appear-active {
+  width: 60%;
+  height: 6vh;
+  font-size: .7em;
+  transition: all 500ms linear;
+}
+
+.answer {
+  width: 100%;
+  padding: 5%;
+  height: 60%;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 0;
+}
+
+.answerButton {
+  width: 90%;
+  height: 30%;
+  background: #9a9b9c;
+  border: none;
+  color: white;
+  font-size: 1.2em;
 }

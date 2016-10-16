@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, browserHistory, IndexRoute} from 'react-router'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import HomePage from './HomePage'
 import Questions from './Questions'
 
@@ -15,10 +14,12 @@ import './App.css'
 const App = React.createClass({
   getInitialState() {
     return {
-      instructions: "You are connected to the Emergency Hotspot",
+      instructions: ["You are connected to the Emergency Hotspot","Send GPS Location if you need immediate help!"],
       helpButton: true,
       showMap: false,
-      questions: ["1","2","3"]
+      questions: ["1","2","3"],
+      danger: false,
+      dangerFunc: this.questionButton
     }
   },
   ajaxCall(){
@@ -38,17 +39,11 @@ const App = React.createClass({
     };
     request.send();
   },
-  helpButton(){
-
+  questionButton(){
+    this.setState({danger: true})
   },
   viewMap() {
     this.setState({showMap: true})
-  },
-  showPosition(position) {
-    var locatn = "Latitude: " + position.coords.latitude +
-    " Longitude: " + position.coords.longitude;
-
-    console.log(locatn);
   },
   render() {
     let that = this
@@ -56,22 +51,14 @@ const App = React.createClass({
         return React.cloneElement(child, Object.assign({}, that.state));
     });
 
-    //navigator.geolocation.getCurrentPosition(this.showPosition);
-
     return (
       <div className="mainBody">
         <header>
-          <h1>FindME</h1>
+          <h1>FINDME</h1>
         </header>
-        <Instructions instructions={this.state.instructions}/>
+        <Instructions pathLocation={this.props.location.pathname} instructions={this.state.instructions}/>
         {children}
-
-        <ReactCSSTransitionGroup transitionName="pageSlider">
-          <MapButton viewMap={this.viewMap}
-            className="map"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300} />
-        </ReactCSSTransitionGroup>
+        {!this.state.showMap ? <MapButton viewMap={this.viewMap}/> : null}
       </div>
     )
   }
