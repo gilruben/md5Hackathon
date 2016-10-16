@@ -3,6 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 const Questions = React.createClass({
+  
   render() {
       let yes = this.props.danger ? "yes" : null
       let buttons =( <div className="buttons">
