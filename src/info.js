@@ -1,6 +1,6 @@
 /*
-logic 
-aa  stands for huricane 
+logic
+aa  stands for huricane
 bb stands for earthquake
 2 and third char stand for range
 & stands for  dont range

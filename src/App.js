@@ -82,24 +82,20 @@ const App = React.createClass({
 
   },
   questionButton(){
-    this.setState({danger: true})
+    let dangerState = this.state.danger ? false : true
+    this.setState({danger: dangerState})
   },
   viewMap() {
     this.setState({showMap: true})
   },
   render() {
-    let that = this
-    let children = React.Children.map(this.props.children, function(child) {
-        return React.cloneElement(child, Object.assign({}, that.state));
-    });
-
     return (
       <div className="mainBody">
         <header>
           <h1>FINDME</h1>
         </header>
         <Instructions pathLocation={this.props.location.pathname} instructions={this.state.instructions}/>
-        {children}
+        {React.cloneElement(this.props.children , Object.assign({}, this.state))}
         {!this.state.showMap ? <MapButton viewMap={this.viewMap}/> : null}
       </div>
     )
