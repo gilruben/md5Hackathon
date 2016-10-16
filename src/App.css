@@ -173,8 +173,6 @@ header h1 {
   position: relative;
 }
 
-<<<<<<< HEAD
-=======
 .yes {
   color: white;
 }
@@ -187,7 +185,6 @@ header h1 {
   color: white;
 }
 
->>>>>>> 2b053985a039bbd3eb22ef17fd1f493d494ea9da
 .buttons-appear {
   width: 85%;
   height: 10vh;
@@ -231,21 +228,6 @@ header h1 {
   font-family: helvetica;
   position: relative;
 }
-
-<<<<<<< HEAD
-=======
-.yes {
-  color: white;
-}
-
-.yes:hover {
-  color: white;
-}
-
-.no:hover {
-  color: white;
-}
->>>>>>> 2b053985a039bbd3eb22ef17fd1f493d494ea9da
 
 .buttons-appear {
   width: 85%;
