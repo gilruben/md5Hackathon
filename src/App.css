@@ -184,3 +184,62 @@ header h1 {
   color: white;
   font-size: 1.2em;
 }
+
+.questionButton {
+  width: 45%;
+  color: white;
+  background: #9a9b9c;
+  border: none;
+  font-size: 1.2em;
+  font-family: helvetica;
+  position: relative;
+}
+
+.yes {
+  background: #4DBE06;
+  color: white;
+}
+
+.yes:hover {
+  background: #4DBE06;
+  color: white;
+}
+
+.no:hover {
+  background: #e85540;
+  color: white;
+}
+
+.buttons-appear {
+  width: 85%;
+  height: 10vh;
+  font-size: 1.2em;
+}
+
+.buttons-appear.buttons-appear-active {
+  width: 60%;
+  height: 6vh;
+  font-size: .7em;
+  transition: all 500ms linear;
+}
+
+.answer {
+  width: 100%;
+  padding: 5%;
+  height: 60%;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 0;
+}
+
+.answerButton {
+  width: 90%;
+  height: 30%;
+  background: #9a9b9c;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+}
