@@ -21,8 +21,9 @@ const App = React.createClass({
       showMap: false,
       questions: null,
       questionsIndex: 0,
-      HQInfo: null 
-
+      HQInfo: null,
+      danger: false,
+      dangerFunc: this.questionButton
     }
   },
   componentWillMount(){
@@ -78,8 +79,8 @@ const App = React.createClass({
     }
     console.log(output);
   },
-  helpButton(){
-
+  questionButton(){
+    this.setState({danger: true})
   },
   viewMap() {
     this.setState({showMap: true})
